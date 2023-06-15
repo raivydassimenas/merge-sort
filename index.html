@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const merge = (A, first, mid, last) => {
+            let mergedList = [];
+            i = first;
+            j = mid + 1;
+            while (i <= mid && j <= last) {
+                if (A[i] < A[j]) {
+                    mergedList.push(A[i++]);
+                } else {
+                    mergedList.push(A[j++])
+                }
+            }
+            for (; i <= mid; i++) {
+                mergedList.push(A[i]);
+            }
+            for (; j <= last; j++) {
+                mergedList.push(A[j]);
+            }
+
+            for (i = first; i <= last; i++) {
+                A[i] = mergedList[i - first];
+            }
+        }
+
+        const mergeSort = (A, first, last) => {
+            if (first < last) {
+                let mid = Math.floor((first + last) / 2);
+                mergeSort(A, first, mid);
+                mergeSort(A, mid + 1, last);
+                merge(A, first, mid, last);
+            }
+        }
+
+        let A = [2, 5, 4, 3, 8];
+        mergeSort(A, 0, 4);
+
+        console.log(A);
+    </script>
+</body>
+</html>
