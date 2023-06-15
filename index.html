@@ -40,9 +40,14 @@
         }
 
         let A = [2, 5, 4, 3, 8];
-        mergeSort(A, 0, 4);
+        const unsortedList = document.createElement("div");
+        unsortedList.innerHTML = "Unsorted list: [" + A.toString() + "]";
+        document.body.appendChild(unsortedList);
 
-        console.log(A);
+        mergeSort(A, 0, 4);
+        const sortedList = document.createElement("div");
+        sortedList.innerHTML = "Sorted list: [" + A.toString() + "]";
+        document.body.appendChild(sortedList);
     </script>
 </body>
 </html>
